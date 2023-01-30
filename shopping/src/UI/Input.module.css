@@ -1,0 +1,11 @@
+.special_input {
+  width: 500px;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid rgb(118, 118, 118);
+}
+.label_wrap {
+  margin: 15px;
+  margin-left: 0;
+}

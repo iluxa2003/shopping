@@ -6,6 +6,8 @@ const Button = styled.button`
   text-align: center;
   border-radius: 5px;
   background-color: #fff;
+  width: fit-content;
+  cursor: pointer;
   ${(props) => `
     color: ${props.color};
     border-color:${props.color};
