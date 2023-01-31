@@ -3,7 +3,12 @@ const Input = (props) => {
   return (
     <label className={classes.label_wrap}>
       <div>{props.name}</div>
-      <input className={classes.special_input} onInput={props.onInput} />
+      <input
+        type={props.type}
+        className={classes.special_input}
+        value={props.value}
+        onInput={props.onInput}
+      />
     </label>
   );
 };
