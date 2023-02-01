@@ -7,8 +7,9 @@ const MainCluster = () => {
   const [budj, setBudj] = useState(0);
   const [sellOne, setSellOne] = useState(0);
   const [buyOne, setBuyOne] = useState(0);
-  const [sellAmount, setSellAmount] = useState(0);
-  const [buyAmount, setBuyAmount] = useState(0);
+  const [sellAmount, setSellAmount] = useState(1);
+  const [buyAmount, setBuyAmount] = useState(1);
+  const [history, setHistory] = useState([]);
   const inputHandler = (func) => {
     const handler = (event) => {
       func(event.target.value);
@@ -20,20 +21,36 @@ const MainCluster = () => {
     setBudj((budjet) => {
       return budjet - buyOne * buyAmount;
     });
+    const item = {
+      purpose: "buy",
+      amount: buyAmount,
+      priceForOne: buyOne,
+    };
+    setHistory((hist) => {
+      return [...hist, item];
+    });
     setBuyOne(0);
-    setBuyAmount(0);
+    setBuyAmount(1);
   };
   const sellHandler = (event) => {
     event.preventDefault();
     setBudj((budjet) => {
       return budjet + sellOne * sellAmount;
     });
+    const item = {
+      purpose: "sell",
+      amount: buyAmount,
+      priceForOne: buyOne,
+    };
+    setHistory((hist) => {
+      return [...hist, item];
+    });
     setSellOne(0);
-    setSellAmount(0);
+    setSellAmount(1);
   };
   return (
-    <div className={classes.main_cluster}>
-      <BudjetHolder>{parseFloat(budj).toFixed(2)}</BudjetHolder>
+    <section className={classes.main_cluster}>
+      <BudjetHolder>{parseFloat(budj).toFixed(2)} $</BudjetHolder>
       <div className={classes.main_cluster__forms}>
         <FormWrap buttonText="Buy" title="Buy stuff" submit={buyHandler}>
           <Input
@@ -63,8 +80,9 @@ const MainCluster = () => {
             onInput={inputHandler(setSellAmount)}
           />
         </FormWrap>
+        {console.log(history)}
       </div>
-    </div>
+    </section>
   );
 };
 export default MainCluster;

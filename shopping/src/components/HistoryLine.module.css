@@ -1,0 +1,8 @@
+.history_line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
